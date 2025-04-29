@@ -1,0 +1,21 @@
+@url = https://42119-yurizin4-securitytutori-zxlbpyffea6.ws-us118.gitpod.io
+@token = 
+
+GET {{url}}/questoes
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/questoes/1
+Authorization: Bearer {{token}}
+
+###
+POST {{url}}/questoes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "pergunta": "Qual é a capital da França?",
+    "categoria": {
+        "id": 1
+    }
+}

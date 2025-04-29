@@ -1,0 +1,22 @@
+@url = 
+@token = 
+
+GET {{url}}/opcoes
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/opcoes/1
+Authorization: Bearer {{token}}
+
+###
+POST {{url}}/opcoes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "texto": "Paris",
+    "correta": true,
+    "questao": {
+        "id": 1
+    }
+}
