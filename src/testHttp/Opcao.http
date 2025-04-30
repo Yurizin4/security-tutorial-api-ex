@@ -1,4 +1,4 @@
-@url = 
+@url = https://8080-yurizin4-securitytutori-zxlbpyffea6.ws-us118.gitpod.io
 @token = 
 
 GET {{url}}/opcoes
