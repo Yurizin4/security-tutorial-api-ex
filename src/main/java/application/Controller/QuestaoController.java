@@ -1,4 +1,4 @@
-package application.controller;
+package application.Controller;
 
 import application.model.Questao;
 import application.repository.QuestaoRepository;

@@ -1,4 +1,4 @@
-package application.controller;
+package application.Controller;
 
 import application.model.Opcao;
 import application.repository.OpcaoRepository;
