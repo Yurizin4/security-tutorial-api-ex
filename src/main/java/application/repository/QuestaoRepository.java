@@ -1,7 +1,7 @@
 package application.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import application.model.Questao;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface QuestaoRepository extends JpaRepository<Questao, Long> {
+public interface QuestaoRepository extends JpaRepository<Questao, Integer> {
 }

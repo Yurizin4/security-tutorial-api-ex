@@ -1,29 +1,46 @@
 package application.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.List;
 
 @Entity
-@Table(name = "questao")
-@Getter
-@Setter
-@NoArgsConstructor
 public class Questao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(name = "enunciado", nullable = false, unique = true)
+    private Integer id;
     private String enunciado;
 
-    @OneToMany(mappedBy = "questao", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Opcao> opcoes;
-
     @ManyToOne
-    @JoinColumn(name = "categoria_id", nullable = false)
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+
+    public Questao() {}
+
+    public Questao(String enunciado, Categoria categoria) {
+        this.enunciado = enunciado;
+        this.categoria = categoria;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getEnunciado() {
+        return enunciado;
+    }
+
+    public void setEnunciado(String enunciado) {
+        this.enunciado = enunciado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 }

@@ -1,7 +1,7 @@
 package application.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import application.model.Opcao;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OpcaoRepository extends JpaRepository<Opcao, Long> {
+public interface OpcaoRepository extends JpaRepository<Opcao, Integer> {
 }

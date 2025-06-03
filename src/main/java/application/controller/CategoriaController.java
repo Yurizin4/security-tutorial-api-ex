@@ -1,28 +1,36 @@
-package application.controller;
+package application.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.persistence.*;
 
-import application.record.CategoriaDTO;
-import application.service.CategoriaService;
-
-@RestController
-@RequestMapping("/categorias")
+@Entity
 public class CategoriaController {
-    @Autowired
-    private CategoriaService categoriaService;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String nome;
 
-    @GetMapping
-    public Iterable<CategoriaDTO> getAll() {
-        return categoriaService.getAll();
+    // Construtor vazio
+    public CategoriaController() {}
+
+    // Construtor com parâmetros
+    public CategoriaController(String nome) {
+        this.nome = nome;
     }
 
-    @PostMapping
-    public CategoriaDTO insert(@RequestBody CategoriaDTO categoria) {
-        return categoriaService.insert(categoria);
+    // Getters e Setters
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

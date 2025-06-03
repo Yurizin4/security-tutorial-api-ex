@@ -1,30 +1,36 @@
 package application.model;
 
-import application.record.CategoriaDTO;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "categorias")
-@Getter
-@Setter
-@NoArgsConstructor
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(nullable = false, unique = true)
+    private Integer id;
     private String nome;
 
-    public Categoria(CategoriaDTO dto) {
-        this.id = dto.id();
-        this.nome = dto.nome();
+    // Construtor vazio
+    public Categoria() {}
+
+    // Construtor com parâmetros
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
+
+    // Getters e Setters
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

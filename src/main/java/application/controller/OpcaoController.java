@@ -1,9 +1,7 @@
 package application.controller;
 
 import application.model.Opcao;
-import application.record.OpcaoDTO;
-import application.service.OpcaoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import application.repository.OpcaoRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,27 +9,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/opcoes")
 public class OpcaoController {
+    private final OpcaoRepository repository;
 
-    @Autowired
-    private OpcaoService service;
-
-    @GetMapping
-    public List<OpcaoDTO> findAll() {
-        return service.findAll();
+    public OpcaoController(OpcaoRepository repository) {
+        this.repository = repository;
     }
 
-    @GetMapping("/{id}")
-    public OpcaoDTO findById(@PathVariable Long id) {
-        return service.findById(id);
+    @GetMapping
+    public List<Opcao> listar() {
+        return repository.findAll();
     }
 
     @PostMapping
-    public OpcaoDTO save(@RequestBody Opcao opcao) {
-        return service.save(opcao);
-    }
-
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        service.delete(id);
+    public Opcao criar(@RequestBody Opcao opcao) {
+        return repository.save(opcao);
     }
 }

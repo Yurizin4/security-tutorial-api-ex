@@ -1,9 +1,7 @@
 package application.controller;
 
 import application.model.Questao;
-import application.record.QuestaoDTO;
-import application.service.QuestaoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import application.repository.QuestaoRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,27 +9,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/questoes")
 public class QuestaoController {
+    private final QuestaoRepository repository;
 
-    @Autowired
-    private QuestaoService service;
-
-    @GetMapping
-    public List<QuestaoDTO> findAll() {
-        return service.findAll();
+    public QuestaoController(QuestaoRepository repository) {
+        this.repository = repository;
     }
 
-    @GetMapping("/{id}")
-    public QuestaoDTO findById(@PathVariable Long id) {
-        return service.findById(id);
+    @GetMapping
+    public List<Questao> listar() {
+        return repository.findAll();
     }
 
     @PostMapping
-    public QuestaoDTO save(@RequestBody Questao questao) {
-        return service.save(questao);
-    }
-
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        service.delete(id);
+    public Questao criar(@RequestBody Questao questao) {
+        return repository.save(questao);
     }
 }
